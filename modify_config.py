@@ -3,13 +3,14 @@ import json
 import re 
 
 
-propertiesFilePath = sys.argv[1]
-JSONFilePath = sys.argv[2]
 
-with open(propertiesFilePath,'r') as f:
+template_propertiesFilePath = sys.argv[1]
+JSONFilePath = sys.argv[2]
+propertiesFilePath= sys.argv[3]
+
+with open(template_propertiesFilePath,'r') as f:
 	line =  f.readlines()
 f.close
-
 
 def parseJSONFile(filepath): 
     with open(filepath,'r') as load_f:
@@ -60,6 +61,6 @@ def writeDataToPropertiesFiles(line_No,channel,key, properties_value, online_val
 
 parseJSONFile(JSONFilePath)
 
-with open(propertiesFilePath,'w') as fw:
+with open(propertiesFilePath+"./lilith_uni_settings.properties",'w') as fw:
 	fw.writelines(line)
 fw.close
